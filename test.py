@@ -7,18 +7,14 @@
 #
 #
 
-# import edilir.
 import opydoviz
 
-# class belirlenir
 kur = opydoviz.kur()
 
-
 # TCMB icin ornek içerir
-tcmb = kur.tcmb('USD', 'ALIS', 'text', verbose=False)
+tcmb = kur.tcmb('USD', 'SATIS', 'json', verbose=False)
 print (tcmb)
 
 # Truncgil icin ornek icerir
-truncgil = kur.truncgil('USD', 'ALIS', 'text', verbose=False)
+truncgil = kur.truncgil('USD', 'ALIS', 'clear', verbose=False)
 print (truncgil)
-

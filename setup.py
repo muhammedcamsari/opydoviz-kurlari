@@ -12,7 +12,7 @@ setuptools.setup(
     description="Python ile guncel doviz kurlarini goruntuleyin.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/muhammedcamsari/opy-doviz-kurlari",
+    url="https://github.com/muhammedcamsari/opydoviz-kurlari",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
