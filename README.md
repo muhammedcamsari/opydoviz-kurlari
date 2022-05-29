@@ -33,7 +33,7 @@ print (truncgil)
 
 ## Gelişmiş Kullanım ve Parametreler
 
-Detaylı kullanım belgeleri için Wiki sayfasını incelemelisiniz. Size en iyi bilgiyi [Wiki](https://github.com/muhammedcamsari/opydoviz-kurlari/wiki/Wiki) sunar!
+Detaylı kullanım belgeleri için Wiki sayfasını incelemelisiniz. Size en iyi bilgiyi [Wiki](https://github.com/muhammedcamsari/opydoviz-kurlari/wiki/Giriş) sunar!
 
 
 ## 1.x Özellikler
