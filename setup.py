@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="opydoviz-kurlari",
-    version="1.0",
+    version="1.1",
     author="Muhammed Çamsarı",
     license='MIT',
     author_email="Muhammedcamsari@icloud.com",

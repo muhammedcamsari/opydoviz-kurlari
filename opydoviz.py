@@ -11,7 +11,7 @@ __appname__ = "opydoviz-kurlari"
 __definition__ = "Python ile guncel doviz kurlarini goruntuleyin."
 __copyright__ = "Copyright (c) 2022 " + __author__
 __license__ = "MIT"
-__version__ = "1.0"
+__version__ = "1.1"
 __email__ = "muhammedcamsari@icloud.com"
 __pgp__ = 'F294 1D36 A8C8 101B EEB0 16A7 B260 DBA5 2DAA 962A'
 
@@ -233,3 +233,7 @@ class kur():
 		else:
 			return (y.status_code)
 
+
+
+def version():
+	log.appinfo(name=__appname__, version=__version__, author=__author__, email=__email__, lisance=__license__, web='www.opyon.com')
