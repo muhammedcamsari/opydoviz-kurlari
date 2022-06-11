@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="opydoviz-kurlari",
-    version="1.1",
+    version="1.2",
     author="Muhammed Çamsarı",
     license='MIT',
     author_email="Muhammedcamsari@icloud.com",
@@ -21,7 +21,7 @@ setuptools.setup(
     ],
     include_package_data=True,
     scripts=["opydoviz.py"],
-    install_requires = ['opy-logger>=2.0', 'lxml>=4.8.0'],
+    install_requires = ['opy-logger>=2.0', 'lxml>=4.8.0', 'tabulate>=0.8.9'],
 
     py_modules=['opydoviz'],
     entry_points='''

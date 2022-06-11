@@ -4,18 +4,36 @@ import opylogger
 import requests
 import json
 from bs4 import BeautifulSoup
-
+from tabulate import tabulate
 
 __author__ = "Muhammed Çamsarı"
 __appname__ = "opydoviz-kurlari"
 __definition__ = "Python ile guncel doviz kurlarini goruntuleyin."
 __copyright__ = "Copyright (c) 2022 " + __author__
 __license__ = "MIT"
-__version__ = "1.1"
+__version__ = "1.2"
 __email__ = "muhammedcamsari@icloud.com"
 __pgp__ = 'F294 1D36 A8C8 101B EEB0 16A7 B260 DBA5 2DAA 962A'
 
 log = opylogger.log()
+
+
+x_tcmb_birim_kodlari = [
+	['USD', 'US DOLLAR', 'ABD DOLARI'], ['AUD', 'AUSTRALIAN DOLLAR', 'AVUSTRALYA DOLARI'],
+	['DKK', 'DANISH KRONE', 'DANİMARKA KRONU'], ['EUR', 'EURO', 'EURO'], ['GBP', 'POUND STERLING', 'İNGİLİZ STERLİNİ'],
+	['CHF', 'SWISS FRANK', 'İSVİÇRE FRANGI'], ['SEK', 'SWEDISH KRONA', 'İSVEÇ KRONU'], ['CAD', 'CANADIAN DOLLAR', 'KANADA DOLARI'],
+	['KWD', 'KUWAITI DINAR', 'KUVEYT DİNARI'], ['NOK', 'NORWEGIAN KRONE', 'NORVEÇ KRONU'], ['SAR', 'SAUDI RIYAL', 'SUUDİ ARABİSTAN RİYALİ'],
+	['JPY', 'JAPENESE YEN', 'JAPON YENİ'], ['BGN', 'BULGARIAN LEV', 'BULGAR LEVASI'], ['RON', 'NEW LEU', 'RUMEN LEYİ'],
+	['RUB', 'RUSSIAN ROUBLE', 'RUS RUBLESİ'], ['IRR', 'IRANIAN RIAL', 'İRAN RİYALİ'], ['CNY', 'CHINESE RENMINBI', 'ÇİN YUANI'],
+	['PKR', 'PAKISTANI RUPEE', 'PAKİSTAN RUPİSİ'], ['QAR', 'QATARI RIAL', 'KATAR RİYALİ'], ['KRW', 'SOUTH KOREAN WON', 'GÜNEY KORE WONU'],
+	['AZN', 'AZERBAIJANI NEW MANAT', 'AZERBAYCAN YENİ MANATI'], ['AED', 'UNITED ARAB EMIRATES DIRHAM', 'BİRLEŞİK ARAP EMİRLİKLERİ DİRHEMİ'],
+]
+
+x_truncgil_birim_kodlari = x_tcmb_birim_kodlari + [
+	['DKK', 'DANISH KRONE', ' DANIMARKA KRONU'], ['BHD', 'BAHRAINI DINAR', 'BAHREYN DİNARI'], ['ILS', 'NEW ISRAELI SHEKEL', 'YENİ İSRAİL ŞEKELİ'], 
+	['INR', 'INDIAN RUPEE', 'HİNDİSTAN RUPİSİ'], ['BRL', 'BRAZILIAN REAL', 'BREZILYA REALİ'], ['CSK', 'CZECH KORUNA', 'ÇEK KORUNASI'], 
+	['ARS', 'ARGENTINE PESO', 'ARJANTIN PESOSU'], ['CLP', 'CHİLEAN PESO', 'ŞİLİ PESOSU'], ['CRC', 'COSTA RİCA', 'KOSTA RİKA'], 
+]
 
 
 class kur():
@@ -24,7 +42,14 @@ class kur():
 	def tcmb(self, parabirimi, islem, outformat='clear', verbose=False):
 
 		if parabirimi:
-			pass
+			birimler = x_tcmb_birim_kodlari[0].__contains__(parabirimi)
+
+			if birimler == False:
+				print ('Birim geçersiz')
+				exit()
+		else:
+			log.error('Gecersiz deger.')
+			log.error('"parabirimi" degeri boş birakilamaz.')		
 
 		if islem == 'ALIS' or islem == 'SATIS':
 			pass
@@ -155,7 +180,11 @@ class kur():
 	def truncgil(self, parabirimi, islem, outformat='clear', verbose=False):
 
 		if parabirimi:
-			pass
+			birimler = x_truncgil_birim_kodlari[0].__contains__(parabirimi)
+
+			if birimler == False:
+				print ('Birim geçersiz')
+				exit()
 
 		if islem == 'ALIS' or islem == 'SATIS':
 			pass
@@ -237,3 +266,16 @@ class kur():
 
 def version():
 	log.appinfo(name=__appname__, version=__version__, author=__author__, email=__email__, lisance=__license__, web='www.opyon.com')
+
+
+def birimler(saglayici):
+	if saglayici == 'tcmb':	
+		print (tabulate(x_tcmb_birim_kodlari, headers=['KUR KODU', 'GLOBAL', 'TURKCE']))
+
+	elif saglayici == 'truncgil':
+		print (tabulate(x_truncgil_birim_kodlari, headers=['KUR KODU', 'GLOBAL', 'TURKCE']))
+	
+	else:
+		log.error('Gecersiz deger.')
+		log.error('"saglayici" degeri [tcmb | truncgil] degerlerinden biri olmalidir.')		
+

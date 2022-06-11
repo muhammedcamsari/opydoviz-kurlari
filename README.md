@@ -20,6 +20,9 @@ pip install opydoviz-kurlari
 import opydoviz
 kur = opydoviz.kur()
 
+# Doviz kurlari birim kodlari
+opydoviz.birimler('truncgil')
+
 # TCMB
 tcmb = kur.tcmb('USD', 'SATIS', 'json')
 print (tcmb)
